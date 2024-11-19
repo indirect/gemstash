@@ -129,7 +129,7 @@ module Gemstash
           db = if RUBY_PLATFORM == "java"
             Sequel.connect("jdbc:sqlite:#{db_path}", config.database_connection_config)
           else
-            Sequel.connect("sqlite://#{CGI.escape(db_path)}", config.database_connection_config)
+            Sequel.connect("sqlite://#{db_path}", config.database_connection_config)
           end
           raise "SQLite 3.44+ required, have #{db.sqlite_version}" unless db.sqlite_version >= 34_400
         when "postgres", "mysql", "mysql2"
